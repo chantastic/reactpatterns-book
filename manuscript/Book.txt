@@ -1,1 +1,3 @@
-function-component.txt
+functional-component.txt
+jsx-spread-attributes.txt
+destructuring-assignment.txt

@@ -1,0 +1,65 @@
+## JSX spread attributes
+
+Spread Attributes is a JSX feature.  
+It's [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for passing an object's properties as JSX attributes.
+
+These two examples are equivalent.
+```jsx
+<main className="main" role="main">{children}</main>
+
+<main {...{className: "main", role: "main", children}} />
+```
+
+Spread Attributes is how we forward `props` (including `children`) to React Elements.
+
+```jsx
+function Button(props) {
+  return <button {...props} />
+}
+```
+
+This is used to apply implementation specifics while keeping a component flexible.  
+This component acts just like a regular `button` — with the additionar of an `aria-label`.  
+
+```jsx
+function CloseButton(props) {
+  return <button aria-label="Close" {...props} />
+}
+```
+
+Order matters.  
+Using the component above,
+the defined `aria-label` can be overridden.
+
+```jsx
+<CloseButton aria-label="Close Button">Close</CloseButton>
+
+// => <button aria-label="Close Button">Close</button>
+```
+
+Placing attributes after `{...props}` makes them constant.
+
+```jsx
+function CloseButton(props) {
+  return <button {...props} aria-label="Close" />
+}
+
+<CloseButton aria-label="This Won't Change anything">Close</CloseButton>
+
+// => <button aria-label="close">Close</button>
+```
+
+For attributes you might like to merge —  
+like `className` or `style` —  
+place them after the `{...props}` and merge the values as needed.
+
+```js
+function FancyDiv(props) {
+  return (
+    <div
+      {...props}
+      className={["fancy-button", props.className].join(' ')}
+    />
+  )
+}
+```
