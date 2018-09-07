@@ -1,4 +1,4 @@
-## Functional Component
+# Functional Component
 
 A function is the simplest way to declare a React component.  
 A function that returns a React Element is a [functional component](https://reactjs.org/docs/components-and-props.html#functional-and-class-components).

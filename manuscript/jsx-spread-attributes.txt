@@ -1,4 +1,4 @@
-## JSX spread attributes
+# JSX spread attributes
 
 Spread Attributes is a JSX feature.  
 It's [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for passing an object's properties as JSX attributes.
